@@ -17,7 +17,51 @@
     <div class="tab1_content">
         <table border="1">
             <tr>
-                <td>인터페이스 테스트</td>
+                <td><script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+  integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
+<script>
+  Kakao.init('ecdd3d01fd4baa2d876155cc69873a1b'); // 사용하려는 앱의 JavaScript 키 입력
+</script>
+<a id="kakaotalk-sharing-btn" href="[removed]shareMessage()">
+  <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+    alt="카카오톡 공유 보내기 버튼" />
+</a>
+<script>
+  function shareMessage() {
+    Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '딸기 치즈 케익',
+        description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+        imageUrl:
+          'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+        link: {
+          // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+          mobileWebUrl: 'https://dev-gma-ui.greencar.co.kr/login',
+          webUrl: 'https://dev-gma-ui.greencar.co.kr/login',
+          androidExecutionParams: 'a=b',
+          iosExecutionParams: 'a=b'
+        },
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845,
+      },
+      buttons: [
+        {
+          title: '초대 링크 가입하기',
+          link: {
+            mobileWebUrl: 'https://dev-gma-ui.greencar.co.kr/login',
+            webUrl: 'https://dev-gma-ui.greencar.co.kr/login',
+            androidExecutionParams: 'a=b',
+            iosExecutionParams: 'a=b'
+          },
+        }
+      ],
+    });
+  }
+</script></td>
                 <td>실행</td>
             </tr>
             <tr>
