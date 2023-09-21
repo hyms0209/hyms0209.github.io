@@ -1,13 +1,12 @@
 {
   "name": "L.SP",
   "short_name": "L.SP",
+  "description": "Lotte AutoLease SP",
   "start_url": "https://www.lotte-autolease.com/sp",
   "display": "standalone",
-  "icons": [
-    {
-      "src": "ic_launcher.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }
-  ]
+  "background_color": "#000000",
+  "theme_color": "#0000FF",
+  "icons":{
+      "192": "icon-192x192.png",
+  }
 }
