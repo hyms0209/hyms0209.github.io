@@ -1,0 +1,13 @@
+{
+  "name": "L.SP",
+  "short_name": "L.SP",
+  "start_url": "https://www.lotte-autolease.com/sp",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "https://github.com/hyms0209/hyms0209.github.io/new/main/app_icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
