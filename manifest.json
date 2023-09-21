@@ -5,8 +5,8 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "https://hyms0209.github.io/ic_launcher.png",
-      "sizes": "180x180",
+      "src": "ic_launcher.png",
+      "sizes": "192x192",
       "type": "image/png"
     }
   ]
