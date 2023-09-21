@@ -7,6 +7,6 @@
   "background_color": "#000000",
   "theme_color": "#0000FF",
   "icons":{
-      "192": "icon-192x192.png",
+      "432": "ic_launcher.png",
   }
 }
