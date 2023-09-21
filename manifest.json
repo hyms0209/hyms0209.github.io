@@ -4,8 +4,8 @@
   "description": "Lotte AutoLease SP",
   "start_url": "https://www.lotte-autolease.com/sp",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
   "icons": {
     "192": "icon-192x192.png"
   }
