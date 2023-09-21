@@ -6,11 +6,7 @@
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#0000FF",
-  "icons":"icons": [
-      {
-        "src": "ic_launcher.png",
-        "sizes": "432x432",
-        "type": "image/png"
-      }
-    ]
+  "icons": {
+    "192": "icon-192x192.png"
+  }
 }
