@@ -25,9 +25,12 @@
 
 	console.log('click : start');
 	installButton.addEventListener("click", async () => {
+	  
 	  if (!installPrompt) {
+		  console.log('install prompt null');
 	    return;
 	  }
+		console.log('install prompt not null');
 	  console.log('click : in');
 	  const result = await installPrompt.prompt();
 	  console.log(`Install prompt was: ${result.outcome}`);
