@@ -23,15 +23,26 @@
       console.log('Service workers are not supported.');
     }
 </script>
-
+<button id="install" hidden>Install</button>
 <script>
-	// window.NativeInterface = {
-	//   callResult: (callId, result, returnData) => {
-	//      console.log(callId)
-	//      console.log(result)
-	//      console.log(returnData)
-	//   }
-	// }
+	let installPrompt = null;
+	const installButton = document.querySelector("#install");
+	
+	window.addEventListener("beforeinstallprompt", (event) => {
+	  event.preventDefault();
+	  installPrompt = event;
+	  installButton.removeAttribute("hidden");
+	});
+	
+	installButton.addEventListener("click", async () => {
+	  if (!installPrompt) {
+	    return;
+	  }
+	  const result = await installPrompt.prompt();
+	  console.log(`Install prompt was: ${result.outcome}`);
+	  installPrompt = null;
+	  installButton.setAttribute("hidden", "");
+	});
 </script>
 <!-- 탭 내용 : 탭 제목을 선택했을 때 표시되는 본문 -->
 네이티브 앱연동 테스트
