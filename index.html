@@ -8,49 +8,13 @@
 	</head>
 	
 <body>
+    <h1>Your Progressive Web App</h1>
+    <!-- 설치 버튼 -->
+    <button id="installButton" style="display:none;">Install App</button>
+    <script src="/sw"></script>
 <br />
 
-<button id="install" hidden>Install</button>
-<script>
-	let installPrompt = null;
-	
-	const installButton = document.getElementById('install');
-	console.log('beforeinstallprompt : start');
-	window.addEventListener("beforeinstallprompt", (event) => {
-		console.log('beforeinstallprompt : in');
-	  event.preventDefault();
-	  installPrompt = event;
-	  installButton.removeAttribute("hidden");
-	});
 
-	console.log('click : start');
-	installButton.addEventListener("click", async () => {
-	  
-	  if (!installPrompt) {
-		  console.log('install prompt null');
-	    return;
-	  }
-		console.log('install prompt not null');
-	  console.log('click : in');
-	  const result = await installPrompt.prompt();
-	  console.log(`Install prompt was: ${result.outcome}`);
-	  installPrompt = null;
-	  installButton.setAttribute("hidden", "");
-	});
-</script>
-<script>
-    if ('serviceWorker' in navigator) {
-      // Register a service worker hosted at the root of the
-      // site using the default scope.
-      navigator.serviceWorker.register('sw.js').then(function(registration) {
-        console.log('Service worker registration succeeded:', registration);
-      }, /*catch*/ function(error) {
-        console.log('Service worker registration failed:', error);
-      });
-    } else {
-      console.log('Service workers are not supported.');
-    }
-</script>
 <!-- 탭 내용 : 탭 제목을 선택했을 때 표시되는 본문 -->
 네이티브 앱연동 테스트
     <br />
