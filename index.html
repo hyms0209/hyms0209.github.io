@@ -11,6 +11,13 @@
 <body>
 <br />
 <script>
+(function () {
+    if ("serviceWorker" in navigator) {
+         navigator.serviceWorker.register("/sw.js");
+    }
+})();
+</script>
+<script>
 	// window.NativeInterface = {
 	//   callResult: (callId, result, returnData) => {
 	//      console.log(callId)
