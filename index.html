@@ -14,17 +14,20 @@
 <script>
 	let installPrompt = null;
 	const installButton = document.querySelector("#install");
-	
+	console.log('beforeinstallprompt : start');
 	window.addEventListener("beforeinstallprompt", (event) => {
+		console.log('beforeinstallprompt : in');
 	  event.preventDefault();
 	  installPrompt = event;
 	  installButton.removeAttribute("hidden");
 	});
-	
+
+	console.log('click : start');
 	installButton.addEventListener("click", async () => {
 	  if (!installPrompt) {
 	    return;
 	  }
+	  console.log('click : in');
 	  const result = await installPrompt.prompt();
 	  console.log(`Install prompt was: ${result.outcome}`);
 	  installPrompt = null;
