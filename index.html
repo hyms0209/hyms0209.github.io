@@ -13,7 +13,8 @@
 <button id="install">Install</button>
 <script>
 	let installPrompt = null;
-	const installButton = document.querySelector("#install");
+	
+	const installButton = document.getElementById('install');
 	console.log('beforeinstallprompt : start');
 	window.addEventListener("beforeinstallprompt", (event) => {
 		console.log('beforeinstallprompt : in');
