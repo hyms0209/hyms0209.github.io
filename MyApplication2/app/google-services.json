@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "762475500541",
+    "project_id": "e-forest-techday",
+    "storage_bucket": "e-forest-techday.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762475500541:android:216ae5100eaacc370bbf94",
+        "android_client_info": {
+          "package_name": "com.hae.eforest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOsO9mCX2H4uCixohcPqOEWb8rCIZrCq8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
