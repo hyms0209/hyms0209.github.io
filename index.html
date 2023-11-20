@@ -93,44 +93,54 @@
     </div>
     
     <br>
-	<!-- 앨범에서 사진 선택 -->
+<!-- 앨범에서 이미지 선택 -->
   <input type="file" accept="image/*" id="albumInput">
 
   <!-- 카메라로 사진 찍기 -->
   <input type="file" accept="image/*" capture="camera" id="cameraInput">
 
-  <!-- 미리보기를 위한 이미지 태그 -->
+  <!-- PDF 파일 선택 -->
+  <input type="file" accept=".pdf" id="pdfInput">
+
+  <!-- 이미지 미리보기를 위한 이미지 태그 -->
   <img id="previewImage" src="#" alt="미리보기 이미지" style="display: none; max-width: 300px;">
 
-  <script>
-    // 앨범에서 사진 선택 input 요소를 가져옵니다.
-    const albumInput = document.getElementById('albumInput');
-    // 카메라로 사진 찍기 input 요소를 가져옵니다.
-    const cameraInput = document.getElementById('cameraInput');
-    // 미리보기 이미지를 가져옵니다.
-    const previewImage = document.getElementById('previewImage');
+  <!-- PDF 미리보기를 위한 iframe 태그 -->
+  <iframe id="pdfViewer" width="100%" height="500px" style="border: 1px solid black;"></iframe>
 
-    // 앨범에서 사진 선택 input 요소에 변경 이벤트를 추가합니다.
+  <script>
+    const albumInput = document.getElementById('albumInput');
+    const cameraInput = document.getElementById('cameraInput');
+    const pdfInput = document.getElementById('pdfInput');
+    const previewImage = document.getElementById('previewImage');
+    const pdfViewer = document.getElementById('pdfViewer');
+
+    // 앨범에서 이미지 선택 input 요소에 변경 이벤트를 추가합니다.
     albumInput.addEventListener('change', function(event) {
-      handleFileSelection(event);
+      handleFileSelection(event, previewImage);
     });
 
     // 카메라로 사진 찍기 input 요소에 변경 이벤트를 추가합니다.
     cameraInput.addEventListener('change', function(event) {
-      handleFileSelection(event);
+      handleFileSelection(event, previewImage);
+    });
+
+    // PDF 파일 선택 input 요소에 변경 이벤트를 추가합니다.
+    pdfInput.addEventListener('change', function(event) {
+      handleFileSelection(event, pdfViewer);
     });
 
     // 파일 선택 처리를 담당하는 함수
-    function handleFileSelection(event) {
+    function handleFileSelection(event, targetElement) {
       const selectedFile = event.target.files[0]; // 선택된 파일 가져오기
 
       if (selectedFile) {
         const reader = new FileReader();
 
         reader.onload = function(event) {
-          // 읽은 이미지를 미리보기에 표시합니다.
-          previewImage.src = event.target.result;
-          previewImage.style.display = 'block'; // 이미지 보이기
+          // 읽은 이미지 또는 PDF 파일을 미리보기에 표시합니다.
+          targetElement.src = event.target.result;
+          targetElement.style.display = 'block'; // 미리보기 요소 보이기
         }
 
         // 파일을 읽습니다.
