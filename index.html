@@ -93,33 +93,50 @@
     </div>
     
     <br>
-	<input type="file" accept="image/*" capture="camera" id="imageInput">
-	  <img id="previewImage" src="#" alt="미리보기 이미지" style="display: none; max-width: 300px;">
-	
-	  <script>
-	    // 이미지 선택 input 요소를 가져옵니다.
-	    const imageInput = document.getElementById('imageInput');
-	    // 미리보기 이미지를 가져옵니다.
-	    const previewImage = document.getElementById('previewImage');
-	
-	    // 이미지 선택 input 요소에 변경 이벤트를 추가합니다.
-	    imageInput.addEventListener('change', function(event) {
-	      const selectedFile = event.target.files[0]; // 선택된 파일 가져오기
-	
-	      if (selectedFile) {
-	        // FileReader 객체를 생성하여 파일을 읽습니다.
-	        const reader = new FileReader();
-	
-	        reader.onload = function(event) {
-	          // 읽은 이미지를 미리보기에 표시합니다.
-	          previewImage.src = event.target.result;
-	          previewImage.style.display = 'block'; // 이미지 보이기
-	        }
-	
-	        // 파일을 읽습니다.
-	        reader.readAsDataURL(selectedFile);
-	      }
-	    });
-	  </script>
+	<!-- 앨범에서 사진 선택 -->
+  <input type="file" accept="image/*" id="albumInput">
+
+  <!-- 카메라로 사진 찍기 -->
+  <input type="file" accept="image/*" capture="camera" id="cameraInput">
+
+  <!-- 미리보기를 위한 이미지 태그 -->
+  <img id="previewImage" src="#" alt="미리보기 이미지" style="display: none; max-width: 300px;">
+
+  <script>
+    // 앨범에서 사진 선택 input 요소를 가져옵니다.
+    const albumInput = document.getElementById('albumInput');
+    // 카메라로 사진 찍기 input 요소를 가져옵니다.
+    const cameraInput = document.getElementById('cameraInput');
+    // 미리보기 이미지를 가져옵니다.
+    const previewImage = document.getElementById('previewImage');
+
+    // 앨범에서 사진 선택 input 요소에 변경 이벤트를 추가합니다.
+    albumInput.addEventListener('change', function(event) {
+      handleFileSelection(event);
+    });
+
+    // 카메라로 사진 찍기 input 요소에 변경 이벤트를 추가합니다.
+    cameraInput.addEventListener('change', function(event) {
+      handleFileSelection(event);
+    });
+
+    // 파일 선택 처리를 담당하는 함수
+    function handleFileSelection(event) {
+      const selectedFile = event.target.files[0]; // 선택된 파일 가져오기
+
+      if (selectedFile) {
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+          // 읽은 이미지를 미리보기에 표시합니다.
+          previewImage.src = event.target.result;
+          previewImage.style.display = 'block'; // 이미지 보이기
+        }
+
+        // 파일을 읽습니다.
+        reader.readAsDataURL(selectedFile);
+      }
+    }
+  </script>
 </body>
 </html>
