@@ -98,9 +98,17 @@
 		<td><a href="payprotocol://dalcoin?location=close" class="button">&nbsp; 웹뷰종료 &nbsp;</a></td>
             </tr>
 
-		 <tr>
+	     <tr>
 		<td>&nbsp; 메인화면이동 &nbsp;</td>
 		<td><a href="payprotocol://dalcoin?location=main" class="button">&nbsp; 메인화면 &nbsp;</a></td>
+            </tr>
+	    <tr>
+		<td>&nbsp; 결제 요청 &nbsp;</td>
+		<td><a href="payprotocolwalletkr://link/payment?tid=11223344" class="button">&nbsp; 결제요청 &nbsp;</a></td>
+            </tr>
+	    <tr>
+		<td>&nbsp; 인증요청 &nbsp;</td>
+		<td><a href="payprotocol://payment/auth?tid=11223344" class="button">&nbsp; 인증요청 &nbsp;</a></td>
             </tr>
 		</table>
     </br>
@@ -143,7 +151,9 @@
     pdfInput.addEventListener('change', function(event) {
       handleFileSelection(event, pdfViewer);
     });
-
+    function onResult(result) {
+	    alert(result)
+    }
     // 파일 선택 처리를 담당하는 함수
     function handleFileSelection(event, targetElement) {
       const selectedFile = event.target.files[0]; // 선택된 파일 가져오기
