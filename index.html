@@ -1,176 +1,24 @@
 <!DOCTYPE html> 
 <html>
 	<head>
-        <link rel="manifest" href="manifest.webmanifest" />
-	<meta name="theme-color" content="#FFFFFF">
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-title" content="L.SP" />
-	<link rel="apple-touch-icon-precomposed" href="icon-192x192.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	</head>
 	
 <body>
-  <button id="install" hidden>Install</button>
- <script>
- 	let installPrompt = null;
-
- 	const installButton = document.getElementById('install');
- 	console.log('beforeinstallprompt : start');
- 	window.addEventListener("beforeinstallprompt", (event) => {
- 		console.log('beforeinstallprompt : in');
- 	  event.preventDefault();
- 	  installPrompt = event;
- 	  installButton.removeAttribute("hidden");
- 	});
-
- 	console.log('click : start');
- 	installButton.addEventListener("click", async () => {
-
- 	  if (!installPrompt) {
- 		  console.log('install prompt null');
- 	    return;
- 	  }
- 		console.log('install prompt not null');
- 	  console.log('click : in');
- 	  const result = await installPrompt.prompt();
- 	  console.log(`Install prompt was: ${result.outcome}`);
- 	  installPrompt = null;
- 	  installButton.setAttribute("hidden", "");
- 	});
- </script>
- <script>
-     if ('serviceWorker' in navigator) {
-       // Register a service worker hosted at the root of the
-       // site using the default scope.
-       navigator.serviceWorker.register('sw.js').then(function(registration) {
-         console.log('Service worker registration succeeded:', registration);
-       }, /*catch*/ function(error) {
-         console.log('Service worker registration failed:', error);
-       });
-     } else {
-       console.log('Service workers are not supported.');
-     }
- </script>
-<br />
-
-
-<!-- 탭 내용 : 탭 제목을 선택했을 때 표시되는 본문 -->
-네이티브 앱연동 테스트
     <br />
     <br />
     <div class="tab1_content">
         <table border="1">
             <tr>
                 <td></td>
-                <td>실행</td>
+                <td></td>
             </tr>
             <tr>
-                <td>&nbsp; 카메라 열기 &nbsp;</td>
-                <td><a href="zaihanif://open/camera" class="button">&nbsp; 카메라 열기 &nbsp;</a></td>
+                <td>&nbsp; PayProtocol &nbsp;</td>
+                <td><a href="https://open/camera" class="button">&nbsp; 카메라 열기 &nbsp;</a></td>
             </tr>
-            <tr>
-                <td>&nbsp; 앨범 &nbsp;</td>
-                <td><a href="zaihanif://open/album" class="button">&nbsp; 앨범 열기 &nbsp;</a></td>
-            </tr>
-		
-            <tr>
-                <td>&nbsp; PDF 다운로드 &nbsp;</td>
-                <td><a href="VestSign_Manual_v1.3.5.pdf">View PDF</a></td>
-            </tr>
-		
-	    <tr>
-                <td>&nbsp; 바이오 인증 &nbsp;</td>
-                <td><a href="lotteautoleaseif://bioauth?callId=112233" class="button">&nbsp; 바이오인증 &nbsp;</a></td>
-            </tr>
-
-	    <tr>
-		<td>&nbsp; 길찾기 &nbsp;</td>
-		<td><a href="lotteautoleaseif://direction?callId=112233" class="button">&nbsp; 길찾기 &nbsp;</a></td>
-            </tr>
-
-		 <tr>
-		<td>&nbsp; 이전화면 &nbsp;</td>
-		<td><a href="ppagwalletswtoa://historyback" class="button">&nbsp; 길찾기 &nbsp;</a></td>
-            </tr>
-
-		 <tr>
-		<td>&nbsp; 웹뷰 종료 &nbsp;</td>
-		<td><a href="payprotocol://dalcoin?location=close" class="button">&nbsp; 웹뷰종료 &nbsp;</a></td>
-            </tr>
-
-	     <tr>
-		<td>&nbsp; 메인화면이동 &nbsp;</td>
-		<td><a href="payprotocol://dalcoin?location=main" class="button">&nbsp; 메인화면 &nbsp;</a></td>
-            </tr>
-	    <tr>
-		<td>&nbsp; 결제 요청 &nbsp;</td>
-		<td><a href="payprotocolwalletkr://link/payment?tid=11223344" class="button">&nbsp; 결제요청 &nbsp;</a></td>
-            </tr>
-	    <tr>
-		<td>&nbsp; 인증요청 &nbsp;</td>
-		<td><a href="payprotocol://payment/auth?tid=11223344" class="button">&nbsp; 인증요청 &nbsp;</a></td>
-            </tr>
-		</table>
+          </table>
     </br>
 	</div>
     </div>
-    
-<!-- 앨범에서 이미지 선택 -->
-  <input type="file" accept="image/*" id="albumInput">
-
-  <!-- 카메라로 사진 찍기 -->
-  <input type="file" accept="image/*" capture="camera" id="cameraInput">
-
-  <!-- PDF 파일 선택 -->
-  <input type="file" accept=".pdf" id="pdfInput">
-
-  <!-- 이미지 미리보기를 위한 이미지 태그 -->
-  <img id="previewImage" src="#" alt="미리보기 이미지" style="display: none; max-width: 300px;">
-
-  <!-- PDF 미리보기를 위한 iframe 태그 -->
-  <iframe id="pdfViewer" width="100%" height="500px" style="border: 1px solid black;"></iframe>
-
-  <script>
-    const albumInput = document.getElementById('albumInput');
-    const cameraInput = document.getElementById('cameraInput');
-    const pdfInput = document.getElementById('pdfInput');
-    const previewImage = document.getElementById('previewImage');
-    const pdfViewer = document.getElementById('pdfViewer');
-
-    // 앨범에서 이미지 선택 input 요소에 변경 이벤트를 추가합니다.
-    albumInput.addEventListener('change', function(event) {
-      handleFileSelection(event, previewImage);
-    });
-
-    // 카메라로 사진 찍기 input 요소에 변경 이벤트를 추가합니다.
-    cameraInput.addEventListener('change', function(event) {
-      handleFileSelection(event, previewImage);
-    });
-
-    // PDF 파일 선택 input 요소에 변경 이벤트를 추가합니다.
-    pdfInput.addEventListener('change', function(event) {
-      handleFileSelection(event, pdfViewer);
-    });
-    function onResult(result) {
-	    alert(result)
-    }
-    // 파일 선택 처리를 담당하는 함수
-    function handleFileSelection(event, targetElement) {
-      const selectedFile = event.target.files[0]; // 선택된 파일 가져오기
-
-      if (selectedFile) {
-        const reader = new FileReader();
-
-        reader.onload = function(event) {
-          // 읽은 이미지 또는 PDF 파일을 미리보기에 표시합니다.
-          targetElement.src = event.target.result;
-          targetElement.style.display = 'block'; // 미리보기 요소 보이기
-        }
-
-        // 파일을 읽습니다.
-        reader.readAsDataURL(selectedFile);
-      }
-    }
-  </script>
 </body>
 </html>
